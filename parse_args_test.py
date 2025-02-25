@@ -22,7 +22,7 @@ def parse_args():
 
     # data and pre-process
     parser.add_argument('--dataset', type=str, default='MSOD')
-    parser.add_argument('--root', type=str, default='/home/guoyx/small_target_detetion/MFSTFNet/dataset',
+    parser.add_argument('--root', type=str, default='/dataset',
                         help='dataset root path')
     parser.add_argument('--suffix', type=str, default='.tif')
 
