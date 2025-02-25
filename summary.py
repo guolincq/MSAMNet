@@ -1,21 +1,18 @@
 import torch
 from thop import clever_format, profile
 from torchsummary import summary
-from model.MFSTFNet import  MFSTFNet, Res_CBAM_block
+from model.DNANet import  DNANet, Res_CBAM_block
 from model.CSAUNet import CSAUNet
 from model.DnTNet import DnTNet
-from model.MSAMNet import MSAMNet, SimAM, CBAM, SE, CoordAtt, Connection, MSAMNet_s, MSAMNet_d
+from model.MSAMNet import MSAMNet, AAFE, CBAM, SE, CoordAtt, Connection
 import os
 
 if __name__ == "__main__":
     #phi         = 'l'
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     device  = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    # model = MFSTFNet(num_classes=1, input_channels=1, block=Res_CBAM_block)
-    # model = CSAUNet(input_channels=1)
-    # model = DnTNet(seq_length=3)
-    model = MSAMNet(frame_length=3, fusionBlock=SimAM)
-    # model = MSAMNet_s(frame_length=3, fusionBlock=SimAM)
+    model = MSAMNet(frame_length=3, fusionBlock=AAFE)
+    
     
     
     summary(model.to(device), (3, 512, 512))
