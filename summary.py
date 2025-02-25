@@ -11,9 +11,6 @@ if __name__ == "__main__":
     #phi         = 'l'
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     device  = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    # model = MFSTFNet(num_classes=1, input_channels=1, block=Res_CBAM_block)
-    # model = CSAUNet(input_channels=1)
-    # model = DnTNet(seq_length=3)
     model = MSAMNet(frame_length=3, fusionBlock=AAFE)
     
     
